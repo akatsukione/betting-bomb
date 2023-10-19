@@ -1,26 +1,21 @@
+// import { PATH } from 'consts';
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// import { Provider } from 'react-redux';
+// import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// import { store } from 'store';
+import { DashboardPage } from 'pages';
 
-function App() {
+export const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <DashboardPage />
+    // <Provider store={store}>
+      // <BrowserRouter>
+      //   <Routes>
+      //     <Route path={"/"} element={<DashboardPage />} />
+      //     {/* <Route path={PATH.TODOS_LIST} element={<TodosListPage />} />
+      //     <Route path={PATH.NOT_FOUND} element={<NotFoundPage />} /> */}
+      //   </Routes>
+      // </BrowserRouter>
+    // </Provider>
   );
-}
-
-export default App;
+};
