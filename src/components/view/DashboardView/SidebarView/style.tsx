@@ -63,6 +63,7 @@ export const RandomBtn = styled.button`
   outline-offset: 2px;
   color: ${fontColor};
   background-color: ${tileColor};
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.2),0 1px 2px 0 rgba(0,0,0,0.12);
   width: 100%;
   box-sizing: border-box;
   &:hover {

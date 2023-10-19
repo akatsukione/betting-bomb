@@ -9,7 +9,7 @@ interface BetGroupComponentProps {
 export const BetGroupComponent:React.FC<BetGroupComponentProps> = (props) => {
   return (
     <InputContainer className={props.disableInput?`disableInput`:``}>
-        <BtcInputComponent type = "number" icon={dollarSignImg} disable = {props.disableInput} background={basicColor} color={fontColor}/>
+        <BtcInputComponent  type = "number"  icon={dollarSignImg} classname='bet-amount' disable = {props.disableInput} background={basicColor} color={fontColor}/>
         <BetbtnComponent>½</BetbtnComponent>
         <BetbtnComponent className='double-bet'>2×</BetbtnComponent>
     </InputContainer>
