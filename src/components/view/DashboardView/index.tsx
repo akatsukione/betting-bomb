@@ -5,6 +5,7 @@ export const DashboardView = () => {
   return (
     <DashboardContainer>
       <Sidebar/>
+      {/* <Bombside></Bombside> */}
     </DashboardContainer>
   );
 };
