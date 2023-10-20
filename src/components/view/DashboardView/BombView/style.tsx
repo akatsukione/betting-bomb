@@ -1,11 +1,12 @@
 import styled from "styled-components";
-import { sidebarColor, fontColor, darkBtnColor, lightBtnColor, tileColor, hoverButtonColor } from "const";
+// import { sidebarColor, fontColor, darkBtnColor, lightBtnColor, tileColor, hoverButtonColor } from "const";
 
-export const SidebarContainer = styled.div`
-  width: 298px;
-  position: fixed;
-  top: 0px;
-  bottom: 0px;
-  padding: 12px;
-  background-color: ${sidebarColor};
+export const CardContainer = styled.div`
+  width:100%;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  grid-template-columns: auto auto auto auto auto; 
+  grid-template-reows: auto auto auto auto auto; 
+  gap:0.5rem;
 `;

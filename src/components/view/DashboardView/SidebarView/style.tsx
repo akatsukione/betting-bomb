@@ -2,11 +2,9 @@ import styled from "styled-components";
 import { sidebarColor, fontColor, darkBtnColor, lightBtnColor, tileColor, hoverButtonColor } from "const";
 
 export const SidebarContainer = styled.div`
-  width: 298px;
-  position: fixed;
-  top: 0px;
-  bottom: 0px;
-  padding: 12px;
+  width: 24rem;
+
+  padding: 0.75rem;
   background-color: ${sidebarColor};
 `;
 export const SidebarSection = styled.div`
@@ -14,8 +12,7 @@ export const SidebarSection = styled.div`
   margin-bottom: 0.75rem;
 `;
 export const SettingGroup = styled.div`
-  // width: 50%;
-  // padding-right:0.5rem;
+  
 `;
 export const LabelFlexContainer = styled.label`
   width: 100%;

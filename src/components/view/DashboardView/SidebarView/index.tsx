@@ -16,29 +16,42 @@ import bombImg from "assets/bomb.png";
 import jewelImg from "assets/jewel.png";
 import dollarImg from "assets/usd.png";
 import { fontColor, tileColor } from "const";
-export const Sidebar = () => {
-  const [isBet, setBet] = React.useState<boolean>(false);
+
+type Dispatcher<S> = React.Dispatch<React.SetStateAction<S>>;
+
+interface SidebarProps {
+  isBet: boolean,
+  betAmount: number,
+  bombNum: number,
+  setBombNum: Dispatcher<number>,
+  setBetAmount?: Dispatcher<number>,
+  setBet: Dispatcher<boolean>,
+}
+
+export const SidebarView:React.FC<SidebarProps> = (props:SidebarProps) => {
+
   const onBetClicked = () => {
-    setBet((prevState) => !prevState);
+    props.setBet((prevState) => !prevState);
   };
+ 
   return (
     <SidebarContainer>
       <SidebarSection>
         <LabelFlexContainer>
           <LabelComponent>Bet Amount</LabelComponent>
-          <LabelComponent className="btc-amount">BTC 0.00000000</LabelComponent>
+          <LabelComponent className="btc-amount">BTC {Number(0.000048*props.betAmount).toFixed(8)}</LabelComponent>
         </LabelFlexContainer>
-        <BetGroupComponent disableInput={isBet}/>
+        <BetGroupComponent betAmount={props.betAmount} setBetAmount={props.setBetAmount} disableInput={props.isBet}/>
       </SidebarSection>
-      {!isBet && (
+      {!props.isBet && (
         <SidebarSection>
           <LabelFlexContainer>
             <LabelComponent>Mines</LabelComponent>
           </LabelFlexContainer>
-          <SelectComponent />
+          <SelectComponent bombNum={props.bombNum} setBombNum={props.setBombNum}/>
         </SidebarSection>
       )}
-      {isBet && (
+      {props.isBet && (
         <>
           <FlexContainer>
             <SettingGroup>
@@ -50,6 +63,7 @@ export const Sidebar = () => {
                 icon={bombImg}
                 background={tileColor}
                 color="rgb(255 255 255)"
+                initialValue={props.bombNum}
               />
             </SettingGroup>
             <SettingGroup>
@@ -61,6 +75,7 @@ export const Sidebar = () => {
                 icon={jewelImg}
                 background={tileColor}
                 color="rgb(255 255 255)"
+                initialValue={25-props.bombNum}
               />
             </SettingGroup>
           </FlexContainer>
@@ -77,6 +92,7 @@ export const Sidebar = () => {
               icon={dollarImg}
               background={tileColor}
               color={fontColor}
+              initialValue={3}
             />
           </SidebarSection>
           <SidebarSection>
@@ -86,10 +102,10 @@ export const Sidebar = () => {
       )}
       <SidebarSection>
         <ButtonComponent
-          className={isBet ? "disable" : ""}
+          className={props.isBet ? "disable" : ""}
           onClick={onBetClicked}
         >
-          {!isBet ? "Bet" : "Cashout"}
+          {!props.isBet ? "Bet" : "Cashout"}
         </ButtonComponent>
       </SidebarSection>
     </SidebarContainer>
