@@ -20,20 +20,52 @@ import { fontColor, tileColor } from "const";
 type Dispatcher<S> = React.Dispatch<React.SetStateAction<S>>;
 
 interface SidebarProps {
+  openedArray: number[],
+  setOpenedArray: Dispatcher<number[]>,
   isBet: boolean,
   betAmount: number,
+  bombArray: number[],
   bombNum: number,
   setBombNum: Dispatcher<number>,
   setBetAmount?: Dispatcher<number>,
   setBet: Dispatcher<boolean>,
+  setBoom: Dispatcher<boolean>,
+  isCashable:boolean,
+  setCashable: Dispatcher<boolean>,
+  setCashed: Dispatcher<boolean>,
 }
 
 export const SidebarView:React.FC<SidebarProps> = (props:SidebarProps) => {
 
   const onBetClicked = () => {
     props.setBet((prevState) => !prevState);
+    props.setBoom(false)
+    props.setCashable(false)
+    props.setOpenedArray([])
+    props.setCashed(false)
   };
- 
+  const onCashClicked = () => {
+    props.setBet((prevState) => !prevState);
+    props.setBoom(true)
+    props.setCashable(false)
+    // props.setOpenedArray([])
+    props.setCashed(true)
+  };
+  const generateRandom = () =>{
+    var arr = props.openedArray;
+    var r = Math.floor(Math.random() * 25) + 1;
+    
+    if(arr.indexOf(r) === -1){
+      props.setOpenedArray(oldArray => [...oldArray, r])
+      if (props.bombArray.includes(r)) {
+        props.setBoom(true)
+        props.setBet(false)
+      } 
+      props.setCashable(true)
+    }else{
+      generateRandom()
+    }
+  }
   return (
     <SidebarContainer>
       <SidebarSection>
@@ -82,9 +114,9 @@ export const SidebarView:React.FC<SidebarProps> = (props:SidebarProps) => {
 
           <SidebarSection>
             <LabelFlexContainer>
-              <LabelComponent>Total profit (0×)</LabelComponent>
+              <LabelComponent>Total profit ({0.04*Array.from(new Set(props.openedArray)).length}×)</LabelComponent>
               <LabelComponent className="btc-amount">
-                BTC 0.00000000
+                BTC {0.000048*props.betAmount*Array.from(new Set(props.openedArray)).length}
               </LabelComponent>
             </LabelFlexContainer>
             <BtcInputComponent
@@ -92,20 +124,27 @@ export const SidebarView:React.FC<SidebarProps> = (props:SidebarProps) => {
               icon={dollarImg}
               background={tileColor}
               color={fontColor}
-              initialValue={3}
+              initialValue={Array.from(new Set(props.openedArray)).length*0.04*props.betAmount}
             />
           </SidebarSection>
           <SidebarSection>
-            <RandomBtn>Pick random tile</RandomBtn>
+            <RandomBtn onClick={generateRandom}>Pick random tile</RandomBtn>
           </SidebarSection>
         </>
       )}
       <SidebarSection>
         <ButtonComponent
-          className={props.isBet ? "disable" : ""}
           onClick={onBetClicked}
+          hidden={props.isBet}
         >
-          {!props.isBet ? "Bet" : "Cashout"}
+          Bet
+        </ButtonComponent>
+        <ButtonComponent
+          className={!props.isCashable ? "disable" : ""}
+          onClick={onCashClicked}
+          hidden={!props.isBet}
+        >
+          Cashout
         </ButtonComponent>
       </SidebarSection>
     </SidebarContainer>

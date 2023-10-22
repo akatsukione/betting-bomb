@@ -4,10 +4,12 @@ import {hoverColor, tileColor } from "const";
 interface InputComponentProps {
   backgroundcolor: string;
 }
+
 export const InputComponentContainer = styled.div`
     position:relative;
     box-sizing:border-box;
 `;
+
 export const InputComponent = styled.input<
 InputComponentProps
 >`
@@ -46,8 +48,8 @@ right: 0;
 position:absolute;
 display: flex;
 align-items: center;
-
 `;
+
 export const IconImage = styled.img`
   height: 1rem
 `;

@@ -6,3 +6,4 @@ export const darkBtnColor = `rgb(0 231 1)`
 export const lightBtnColor = `rgb(31 255 32)`
 export const hoverColor = `rgb(85 112 134)`
 export const hoverButtonColor = `rgb(61 85 100)`
+export const tileBackgroundColor = `rgb(7 24 36)`
