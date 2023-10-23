@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { basicColor } from 'const';
 
-export const DashboardContainer = styled.div`
+export const DashboardStyledComponent = styled.div`
   width: 100%;
   display: flex;
   position: fixed;

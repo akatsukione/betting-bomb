@@ -4,15 +4,17 @@ import {hoverColor, tileColor } from "const";
 interface InputComponentProps {
   backgroundcolor: string;
 }
+
 export const InputComponentContainer = styled.div`
     position:relative;
     box-sizing:border-box;
 `;
+
 export const InputComponent = styled.input<
 InputComponentProps
 >`
-  border-bottom-left-radius: 0.25rem;
-  border-top-left-radius: 0.25rem;
+border-top-left-radius: 0.25rem;
+border-bottom-left-radius: 0.25rem;
   border-color: rgb(47 69 83);
   padding: 0.625rem;
   padding-right: 2rem;
@@ -25,9 +27,13 @@ InputComponentProps
   color:${(props) => props.color};
   background-color:${(props) => props.backgroundcolor};
   width: 100%;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.2),0 1px 2px 0 rgba(0,0,0,0.12);
   box-sizing:border-box;
   &.disableInput{
     pointer-events: none;
+  }
+  &:not(.bet-amount){
+    border-radius: 0.25rem;
   }
   &:hover {
     border-color: ${hoverColor}
@@ -42,8 +48,8 @@ right: 0;
 position:absolute;
 display: flex;
 align-items: center;
-
 `;
+
 export const IconImage = styled.img`
   height: 1rem
 `;

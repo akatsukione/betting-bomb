@@ -1,22 +1,24 @@
 import styled from "styled-components";
-import { sidebarColor, fontColor, darkBtnColor, lightBtnColor, tileColor, hoverButtonColor } from "const";
+import {
+  sidebarColor,
+  fontColor,
+  darkBtnColor,
+  lightBtnColor,
+  tileColor,
+  hoverButtonColor,
+} from "const";
 
 export const SidebarContainer = styled.div`
-  width: 298px;
-  position: fixed;
-  top: 0px;
-  bottom: 0px;
-  padding: 12px;
+  width: 24rem;
+
+  padding: 0.75rem;
   background-color: ${sidebarColor};
 `;
 export const SidebarSection = styled.div`
   width: 100%;
   margin-bottom: 0.75rem;
 `;
-export const SettingGroup = styled.div`
-  // width: 50%;
-  // padding-right:0.5rem;
-`;
+export const SettingGroup = styled.div``;
 export const LabelFlexContainer = styled.label`
   width: 100%;
   display: flex;
@@ -55,7 +57,6 @@ export const RandomBtn = styled.button`
   padding: 0.625rem;
   padding-right: 2rem;
   font-weight: 500;
-  // cursor: not-allowed;
   font-size: 0.875rem;
   line-height: 1.25rem;
   border: 2px solid ${tileColor};
@@ -63,11 +64,25 @@ export const RandomBtn = styled.button`
   outline-offset: 2px;
   color: ${fontColor};
   background-color: ${tileColor};
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.12);
   width: 100%;
   box-sizing: border-box;
   &:hover {
     background-color: ${hoverButtonColor};
     border-color: ${hoverButtonColor};
+    cursor: pointer;
+  }
+  &:active {
+    animation: random-click 0.5s ease;
+
+    @keyframes random-click {
+      0% {
+        font-size:0.875rem;
+      }
+      100% {
+        font-size:0.7rem;
+      }
+    }
     cursor: pointer;
   }
 `;
@@ -80,17 +95,22 @@ export const ButtonComponent = styled.button`
   width: 100%;
   height: 3.5rem;
   border-width: 0;
-  
+
   &:not(.disable):hover {
     background-color: ${lightBtnColor};
     cursor: pointer;
   }
+
+  &:not(.disable):active {
+    background-color: ${lightBtnColor};
+    cursor: pointer;
+  }
   &.disable:hover {
-    background-color:red;
+    background-color: red;
     cursor: not-allowed;
   }
   &.disable {
-    opacity:0.5;
-    pointer-events:none;
+    opacity: 0.5;
+    pointer-events: none;
   }
 `;
