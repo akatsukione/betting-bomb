@@ -94,6 +94,9 @@ export const CardItem = styled.div`
   &.boomed:hover {
     transform: translateY(0);
   }
+  &.open-card > .covered{
+    visibility: visible;
+  }
 `;
 
 export const ExplosionContainer = styled.img`
@@ -200,7 +203,6 @@ export const ItemContainer = styled.img`
     pointer-events: auto;
     animation: bomb-click 1s forwards;
     animation-delay:0.3s;
-    // animation
     @keyframes bomb-click {
       0% {
         visibility:visible;
