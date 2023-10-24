@@ -63,7 +63,7 @@ export const CardItem = styled.div`
 
 
   &.boomed:not(.open-card) {
-    // background-color: ${tileBackgroundColor};
+    
     animation: boomeed-animation 1s forwards;
 
     @keyframes boomeed-animation {
@@ -94,9 +94,9 @@ export const CardItem = styled.div`
   &.boomed:hover {
     transform: translateY(0);
   }
-  &.open-card > .covered{
-    visibility: visible;
-  }
+  // &.open-card > .covered{
+  //   visibility: visible;
+  // }
 `;
 
 export const ExplosionContainer = styled.img`
@@ -196,32 +196,6 @@ export const ItemContainer = styled.img`
         }
       }
   
-  }
-  &.covered.boomed {
-    width: 5rem;
-    opacity: 3;
-    pointer-events: auto;
-    animation: bomb-click 1s forwards;
-    animation-delay:0.3s;
-    @keyframes bomb-click {
-      0% {
-        visibility:visible;
-        transform: scale(0);
-        opacity: 0;
-      }
-      50% {
-        visibility:visible;
-        transform: scale(0);
-        opacity: 0;
-      }
-      100% {
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 1;
-        visibility:visible;
-      }
-    }
   }
   opacity: 0.5;
   z-index: 2;
